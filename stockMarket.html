@@ -1,0 +1,60 @@
+<template>
+    <div class="box">
+        <h1>AMERICAN STOCK EXCHANGE V1.0</h1>
+        <form onsubmit={submithandler} onreset={resethandler}>
+            <lightning-input 
+                class="slds-var-m-around_medium" 
+                label="Enter Stock Code" 
+                placeholder="Security code.." 
+                type="text" 
+                onchange={changehandler}>
+            </lightning-input>
+
+            <div>
+                <span>
+                    <lightning-button 
+                        class="slds-var-m-around_medium" 
+                        label="SUBMIT" 
+                        variant="destructive"  
+                        type="submit">
+                    </lightning-button>
+                </span>
+
+                <span>
+                    <lightning-button 
+                        class="slds-var-m-around_medium" 
+                        label="RESET" 
+                        variant="brand" 
+                        type="reset">
+                    </lightning-button>
+                </span>
+            </div>
+        </form>
+
+        <div class="inside">
+            <template if:true={isinnerboxvisible}>
+                <div class="innerbox">
+                    <template if:true={text1}>
+                        <div class="stylea">{text1}</div>
+                    </template>
+
+                    <template if:true={finalobject}>
+                        <div class="stylea">Stock Code is {getcode}</div>
+                        <div class="stylea">This data is Last Updated on {getrefreshedstatus}</div>
+                        <div class="stylea">the stock open price is {getopen}</div>
+                        <div class="stylea">the stock high price is {gethigh}</div>
+                        <div class="stylea">the stock low price is {getlow}</div>
+                        <div class="stylea">the stock close price is {getclose}</div>
+                        <div class="stylea">the stock's traded volume is {getvolume}</div>
+
+                    </template>
+
+                    <template if:true={errormessage}>
+                        <div>{errormessage}</div>
+                    </template>
+                    
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
